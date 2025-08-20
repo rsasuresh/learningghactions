@@ -1,6 +1,6 @@
 name: first workflow
 
-on: 
+on:
   workflow_dispatch:
 
 jobs:
@@ -17,8 +17,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Run environment variables (Windows)
-        run: Get-ChildItem Env: | Sort-Object Name
-        shell: pwsh  # Ensures PowerShell Core is used
+        run: "Get-ChildItem Env: | Sort-Object Name"
+        shell: pwsh # Ensures PowerShell Core is used
 
       - name: Checkout code
         uses: actions/checkout@v2
