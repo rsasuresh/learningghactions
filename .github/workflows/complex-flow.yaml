@@ -1,0 +1,29 @@
+name: workflow with multiple runners and jobs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: getting date
+        run: date
+  job2:
+    needs: job1
+    runs-on: windows-latest
+    steps:
+      - name: getting date
+        run: date
+  job3:
+    needs: job2
+    runs-on: macos-latest
+    steps:
+      - name: getting date
+        run: date
+  job4:
+    needs: [job1, job2, job3]
+    runs-on: ubuntu-latest
+    steps:
+      - name: envronment variables
+        run: env | sort
