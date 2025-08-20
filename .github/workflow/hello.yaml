@@ -1,0 +1,16 @@
+name: action demonstration
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: actions/checkout@v1
+      - name: run a command
+        run: echo "hello world"
+      - name: multi commands
+        run: |
+          ls -al
+          date
+          pwd

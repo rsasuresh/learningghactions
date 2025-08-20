@@ -1,0 +1,24 @@
+name: first workflow
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run environment variables (Linux)
+        run: env | sort
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+  job2:
+    runs-on: windows-latest
+    steps:
+      - name: Run environment variables (Windows)
+        run: Get-ChildItem Env: | Sort-Object Name
+        shell: pwsh  # Ensures PowerShell Core is used
+
+      - name: Checkout code
+        uses: actions/checkout@v2
